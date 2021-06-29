@@ -1,0 +1,250 @@
+@media(min-width: 1400px) {
+    .container {
+        max-width: 95% !important;
+    }
+
+    /* Navigation */
+
+    .nav__time {
+        font-size: 3.5vh;
+    }
+
+    .nav__logo {
+        font-size: 4vh;
+    }
+
+    .nav__set {
+        transform: scale(1.15);
+    }
+
+    /* Меню */
+
+    .menu__link {
+        font-size: 2.4vh;
+    }
+
+
+    /* Weather Container */
+    .weather__container {
+        margin-top: 9vh;
+    }
+
+    /* Weather Content */
+    .weather-content {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .weather-content__uptitle {
+        font-size: 2.5vh;
+    }
+
+    .weather-content__title {
+        font-size: 3.4vh;
+    }
+
+    .weather-content__icon {
+        font-size: 21vh;
+    }
+
+    .weather-info p {
+        font-size: 2vh;
+    }
+
+    /* Weather Forecast */
+
+    .weather-forecast__title {
+        font-size: 2.5vh;
+    }
+
+    .weather-card {
+        padding: 25px;
+    }
+
+    .weather-card-left__date {
+        font-size: 2.2vh;
+    }
+
+    .weather-card-left__weather {
+        font-size: 2vh;
+    }
+
+    .weather-card-right__tempDay {
+        font-size: 2vh;
+    }
+
+    .weather-card-right__icon {
+        font-size: 4vh;
+    }
+
+
+
+}
+
+@media(max-width: 1199.5px) {
+
+    /* Weather Content */
+    .weather-content {
+        padding-top: 25px;
+        padding-bottom: 25px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    /* Weather Forecast */
+    .weather-card {
+        padding: 15px;
+    }
+
+    /* Banner */
+    .banner {
+        max-width: 280px;
+        width: 100%;
+    }
+}
+
+@media(max-width: 991.5px) {
+
+    .weather__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 50px;
+        padding-bottom: 25px;
+    }
+
+    /* Weather Content */
+    .weather-content {
+        grid-area: 1 / 1 / 2 / 2;
+        max-width: 300px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Баннер */
+    .banner {
+        grid-area: 1 / 2 / 2 / 3;
+        margin: 0 auto;
+    }
+
+    /* Forecast */
+    .weather-forecast {
+        grid-area: 2 / 1 / 3 / 3;
+        width: 50%;
+        margin: 0 auto;
+
+    }
+
+    .weather-forecast__title {
+        text-align: center;
+    }
+
+    /* Menu */
+    .menu {
+        width: 50%;
+    }
+
+}
+
+@media(max-width: 767.5px) {
+    .weather__container {
+        grid-column-gap: 25px;
+    }
+
+    .weather-forecast {
+        width: 70%;
+    }
+
+
+    .weather-card-left {
+        margin-right: 45px;
+    }
+}
+
+@media(max-width: 575.5px) {
+
+    /* Header */
+    .nav__time {
+        display: none;
+    }
+
+    .nav__logo {
+        font-size: 25px;
+    }
+
+    .nav__set {
+        padding: 10px 13px;
+        width: 45px;
+    }
+
+    .nav__span1 {
+        width: 20px;
+    }
+
+    .nav__span2 {
+        width: 20px;
+    }
+
+    .nav__set:hover .nav__span3 {
+        width: 20px;
+    }
+
+    /* Menu */
+    .menu {
+        width: 100%;
+    }
+
+    .menu__list {
+        text-align: center;
+        padding-top: 75px;
+        padding-left: 15px;
+        padding-right: 15px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 15px;
+    }
+
+    .menu__list:nth-child(2) {
+        color: coral !important;
+    }
+
+    .link15 {
+        grid-area: 8 / 1 / 9 / 3;
+    }
+
+    /* Weather */
+
+    .weather__container {
+        display: grid;
+        grid-column-gap: 0px;
+        grid-template-columns: unset;
+        justify-content: center;
+    }
+
+    .weather-content {
+        grid-area: 1 / 1 / 2 / 2;
+        max-width: 300px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .weather-forecast {
+        grid-area: 3 / 1 / 4 / 2;
+        width: 100%;
+    }
+
+    .weather-card-left {
+        margin: 0;
+    }
+
+    .banner {
+        grid-area: 2 / 1 / 3 / 2;
+        max-width: 300px;
+        width: 100%;
+        height: 150px;
+        margin: 0;
+    }
+}

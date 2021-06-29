@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latmedia Weather</title>
+    <link rel="shortcut icon" href="../img/sun.png" type="image/x-icon">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <!-- LIBS -->
+    <link rel="stylesheet" href="../libs/bootstrap5/bootstrap-grid.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- CUSTOM -->
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/media.css">
+</head>
+
+<body class="body__back">
+    <header>
+        <nav>
+            <div class="container nav__container">
+                <a href="#!" class="nav__time color_picker"></a>
+                <a class="nav__logo color_picker" href="#!">LatMetio App</a>
+                <a class="nav__set box_picker" href="#!">
+                    <span class="nav__span color_span nav__span1"></span>
+                    <span class="nav__span color_span nav__span2"></span>
+                    <span class="nav__span color_span nav__span3"></span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="weather">
+            <div class="container weather__container">
+                <div id="currentWeather" class="weather-content box_picker">
+                    <h5 class="weather-content__uptitle color_picker"></h5>
+                    <h2 class="weather-content__title color_picker"></h2>
+                    <p class="weather-content__iconholder">
+                        <i class="weather-content__icon"></i>
+                    </p>
+                    <p class="weather-content__temp color_picker" style="margin-left: 6%;"></p>
+                    <div class="weather-info">
+                        <p class="weather-info__line weather-info__type color_picker">Переменная облачность</p>
+                        <p class="weather-info__line weather-info__feel color_picker">Чувствуется как 17,5°</p>
+                    </div>
+                </div>
+                <div class="weather-forecast">
+                    <div class="weather-forecast_today">
+                        <h4 class="weather-forecast__title color_picker">Прогноз на сегодня:</h4>
+                        <div class="weather-card box_picker">
+                            <div class="weather-card-left">
+                                <p class="weather-card-left__date weather-card-left__date_today color_picker">Четверг,
+                                    25
+                                    марта</p>
+                                <p class="weather-card-left__weather weather-card-left__weather_today color_picker">
+                                    переменная облачность
+                                </p>
+                            </div>
+                            <div class="weather-card-right">
+                                <i class="weather-card-right__icon weather-card-right__icon_today"></i>
+                                <div class="weather-card-right__tempDiv">
+                                    <p
+                                        class="weather-card-right__tempDay weather-card-right__tempDay_today color_picker">
+                                        19
+                                    </p>
+                                    <p
+                                        class="weather-card-right__tempNight weather-card-right__tempNight_today color_picker">
+                                        12</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="weather-forecast_forecaster">
+                        <h4 class="weather-forecast__title color_picker">Прогноз на 3 дня:</h4>
+                        <!-- Завтра -->
+                        <div class="weather-card box_picker">
+                            <div class="weather-card-left">
+                                <p class="weather-card-left__date weather-card-left__date_tomorrow color_picker">Данных нет</p>
+                                <p class="weather-card-left__weather weather-card-left__weather_tomorrow color_picker">Данных нет</p>
+                            </div>
+                            <div class="weather-card-right">
+                                <i class="weather-card-right__icon weather-card-right__icon_tomorrow"></i>
+                                <div class="weather-card-right__tempDiv">
+                                    <p class="weather-card-right__tempDay weather-card-right__tempDay_tomorrow color_picker">Данных нет</p>
+                                    <p class="weather-card-right__tempNight weather-card-right__tempNight_tomorrow color_picker">Данных нет</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Послезавтра -->
+                        <div class="weather-card weather-card2 box_picker">
+                            <div class="weather-card-left">
+                                <p class="weather-card-left__date weather-card-left__date_aftertomorrow color_picker">Данных нет</p>
+                                <p class="weather-card-left__weather weather-card-left__weather_aftertomorrow color_picker">Данных нет</p>
+                            </div>
+                            <div class="weather-card-right">
+                                <i class="weather-card-right__icon weather-card-right__icon_aftertomorrow"></i>
+                                <div class="weather-card-right__tempDiv">
+                                    <p class="weather-card-right__tempDay weather-card-right__tempDay_aftertomorrow color_picker">Данных нет</p>
+                                    <p class="weather-card-right__tempNight weather-card-right__tempNight_aftertomorrow color_picker">Данных нет</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- day3 -->
+                        <div class="weather-card weather-card3 box_picker">
+                            <div class="weather-card-left">
+                                <p class="weather-card-left__date weather-card-left__date_day3 color_picker">Данных нет</p>
+                                <p class="weather-card-left__weather weather-card-left__weather_day3 color_picker">Данных нет</p>
+                            </div>
+                            <div class="weather-card-right">
+                                <i class="weather-card-right__icon weather-card-right__icon_day3"></i>
+                                <div class="weather-card-right__tempDiv">
+                                    <p class="weather-card-right__tempDay weather-card-right__tempDay_day3 color_picker">Данных нет</p>
+                                    <p class="weather-card-right__tempNight weather-card-right__tempNight_day3 color_picker">Данных нет</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner box_picker"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="menu box_picker">
+        <ul class="menu__list">
+            <a class="menu__close" href="#!">
+                <i class="ri-close-fill color_picker"></i>
+            </a>
+            <li class="menu__item link1"><a href="./bukhara.html" class="menu__link color_picker">Бухара</a></li>
+            <li class="menu__item"><a href="../index.html" class="menu__link color_picker">Ташкент</a></li>
+            <li class="menu__item"><a href="./andijan.html" class="menu__link color_picker">Андижан</a></li>
+            <li class="menu__item"><a href="./gulistan.html" class="menu__link color_picker">Гулистан</a></li>
+            <li class="menu__item"><a href="./jizzakh.html" class="menu__link color_picker">Джизак</a></li>
+            <li class="menu__item"><a href="./karshi.html" class="menu__link color_picker">Карши</a></li>
+            <li class="menu__item"><a href="./navoi.html" class="menu__link color_picker">Навои</a></li>
+            <li class="menu__item"><a href="./namangan.html" class="menu__link color_picker">Наманган</a></li>
+            <li class="menu__item"><a href="./nukus.html" class="menu__link color_picker">Нукус</a></li>
+            <li class="menu__item"><a href="./samarkand.html" class="menu__link color_picker">Самарканд</a></li>
+            <li class="menu__item"><a href="./termez.html" class="menu__link color_picker">Термез</a></li>
+            <li class="menu__item"><a href="./urgench.html" class="menu__link color_picker">Ургенч</a></li>
+            <li class="menu__item"><a href="./ferghana.html" class="menu__link color_picker">Фергана</a></li>
+        </ul>
+        <div class="menu__add">
+            <a class="menu__add-link menu__add-widget color_picker" href="#!">
+                <i class="ri-code-s-slash-fill color_picker"></i>
+                Получить виджет</a>
+            <a class="menu__add-link menu__link-docs color_picker" href="#!">
+                <i class="ri-tools-fill color_picker"></i>
+                Документация</a>
+        </div>
+    </div>
+
+    <p id="settings_city" data-wcity="Bukhara" data-hcity="bukhara">Бухара</p>
+
+    <script defer src="../js/back.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+
+    <script src="../js/front.js"></script>
+</body>
+
+</html>
