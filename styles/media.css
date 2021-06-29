@@ -2,83 +2,60 @@
     .container {
         max-width: 95% !important;
     }
-
     /* Navigation */
-
     .nav__time {
         font-size: 3.5vh;
     }
-
     .nav__logo {
         font-size: 4vh;
     }
-
     .nav__set {
         transform: scale(1.15);
     }
-
-    /* Меню */
-
+    /* Menu */
     .menu__link {
         font-size: 2.4vh;
     }
-
-
     /* Weather Container */
     .weather__container {
         margin-top: 9vh;
     }
-
     /* Weather Content */
     .weather-content {
         padding-top: 50px;
         padding-bottom: 50px;
     }
-
     .weather-content__uptitle {
         font-size: 2.5vh;
     }
-
     .weather-content__title {
         font-size: 3.4vh;
     }
-
     .weather-content__icon {
         font-size: 21vh;
     }
-
     .weather-info p {
         font-size: 2vh;
     }
-
     /* Weather Forecast */
-
     .weather-forecast__title {
         font-size: 2.5vh;
     }
-
     .weather-card {
         padding: 25px;
     }
-
     .weather-card-left__date {
         font-size: 2.2vh;
     }
-
     .weather-card-left__weather {
         font-size: 2vh;
     }
-
     .weather-card-right__tempDay {
         font-size: 2vh;
     }
-
     .weather-card-right__icon {
         font-size: 4vh;
     }
-
-
-
 }
 
 @media(max-width: 1199.5px) {

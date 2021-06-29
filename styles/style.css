@@ -42,15 +42,6 @@
     --moon: #ffc500;
     --moonWithCloudy: #c3c3c3;
     --moonMisty: #b5b5b5;
-
-    /* 1b1b1b */
-
-
-
-
-
-
-
 }
 
 /* Basic */
@@ -523,20 +514,16 @@ a {
 }
 
 /* Banner */
-
 .banner {
     max-width: 300px;
     width: 100%;
     background: url(../img/ac4459105280771.5f7577f3e407e.jpg) no-repeat center / cover;
     border-radius: 15px;
 }
-
-/* City Settings */
-
+/* City Settings. That's why I told in index.html not to touch the element */ 
 #settings_city {
     display: none;
 }
-
 .link1 {
     grid-area: 1 / 1 / 2 / 3;
 }
