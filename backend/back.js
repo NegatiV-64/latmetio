@@ -1,9 +1,9 @@
 const apiKeysArray = [
-  "cac3427ab24f44b470779f0a8efa25e3",
-  "e84adc806b12a31f9bc35657d74a931e",
-  "dd151471f1a82230bb263903e418bf7b",
-  "7d44fca2d125a7eb98dcbcf42f38e757",
-  "96fd9bf8f54700190b83b28c5019174b"
+  "",
+  "",
+  "",
+  "",
+  ""
 ]
 
 const city = document.querySelector('#settings_city');
