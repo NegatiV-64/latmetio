@@ -69,9 +69,7 @@ switch (inputVal) {
 }
 
 function mainApiCall() {
-
   const WeatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric&lang=ru`;
-
   fetch(WeatherApiUrl)
     .then(response => response.json())
     .then(data => {
@@ -585,6 +583,11 @@ function mainApiCall() {
         success: function (xml) {
           // ForecastArray = массив от XML где держаться все xml элементы Forecast
           const forecastArray = xml.querySelectorAll('Forecast');
+          const tempForecastArray1 = Array.from(forecastArray)
+          // const tempForecastArray2 = Array.from(tempForecastArray1);
+          // const tempForecastArray3 = tempForecastArray2.map(item=> item.childNodes)
+          // console.log(tempForecastArray3);
+           console.log(tempForecastArray1);
 
           // Массив для получения данных о дате
           let dayDateArray = [];
