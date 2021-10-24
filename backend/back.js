@@ -73,6 +73,8 @@ function mainApiCall() {
   fetch(WeatherApiUrl)
     .then(response => response.json())
     .then(data => {
+      console.log(data);
+
       // Конвертер из UNIX в нормальное время
       function unixFormatter(unixTime) {
         let unix_timestamp = unixTime;
