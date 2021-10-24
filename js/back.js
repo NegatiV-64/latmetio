@@ -74,4 +74,3 @@ const city = document.getElementById('currentCity');
 const openWeatherCode = city.getAttribute('open-weather-code');
 const hydrometCode = city.getAttribute("hydromet-code")
 const apiKey = apiGenerator(openWeatherCode);
-console.log(apiKey);
