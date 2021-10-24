@@ -9,7 +9,6 @@ const apiKeysArray = [
 const currentCity = document.getElementById('currentCity');
 const openWeatherCode = currentCity.getAttribute('open-weather-code');
 const hydrometCode = currentCity.getAttribute("hydromet-code")
-const apiKey = apiGenerator(openWeatherCode);
 
 const apiGenerator = (cityCode) => {
   let apiKey = "default";
@@ -74,6 +73,8 @@ const apiGenerator = (cityCode) => {
 
   return apiKey;
 }
+
+const apiKey = apiGenerator(openWeatherCode);
 
 const todayIconsConverter = (icon) => {
   // Variables for return object
@@ -397,7 +398,7 @@ const todayIconsConverter = (icon) => {
         break;
     }
   }
-  return [weatherIcon, backType, fontColor, spanColor, boxColor]
+  return { weatherIcon, backType, fontColor, spanColor, boxColor }
 }
 
 const clock = () => {
@@ -412,6 +413,66 @@ const clock = () => {
   document.querySelector('.nav__time').innerHTML = `${currentHour}:${currentMinutes}`
 
   setTimeout(() => clock(), 1000);
+}
+
+const dynamicStylesHandler = (backType, fontColor, spanColor, boxColor) => {
+  // Changing Background of the Body Element
+  const websiteBody = document.querySelector('.body__back');
+  websiteBody.classList.add(`${backType}`);
+  // Changing the Font Color of the elements:
+  const colorElements = document.querySelectorAll('.color_picker');
+  for (let index = 0; index < colorElements.length; index++) {
+    const singleElement = colorElements[index];
+    singleElement.classList.add(`${fontColor}`);
+  }
+  // Changind Burger Menu color
+  const burgerElements = document.querySelectorAll('.color_span');
+  for (let index = 0; index < burgerElements.length; index++) {
+    const spanElement = burgerElements[index];
+    spanElement.classList.add(`${spanColor}`)
+  }
+  // Changing Side Menu Color:
+  const sideMenu = document.querySelector('.menu');
+  sideMenu.classList.add(`${backType}`)
+  // Редактирование box-shadow
+  const boxShadow = document.querySelectorAll('.box_picker');
+  for (let index = 0; index < boxShadow.length; index++) {
+    const boxElement = boxShadow[index];
+    boxElement.classList.add(`${boxColor}`)
+  }
+}
+
+const todayHydrateData = (data) => {
+  const currentDate = new Date();
+  const dateOptions = { weekday: 'long', month: 'long' };
+  const [currentMonth, currentWeekDay] = currentDate.toLocaleDateString('ru-Ru', dateOptions).split(" ")
+
+  const currentDataHTML = document.querySelector('.weather-content__uptitle');
+  const currentMonthDay = currentDate.getDate();
+  let minutes = currentDate.getMinutes();
+
+  if (minutes < "10") {
+    minutes = '0' + minutes;
+  }
+
+  // Display Current Day Date Information
+  currentDataHTML.innerText = `${currentWeekDay}, ${currentMonthDay} ${currentMonth}`
+
+  // Displaying Current Weather Temperature
+  const currentWeatherTemp = document.querySelector('.weather-content__temp');
+  currentWeatherTemp.innerHTML = `${Math.round(data.main.temp)}°`;
+  // Displaying Current Weather Type
+  const currentWeatherType = document.querySelector('.weather-info__type');
+  currentWeatherType.innerHTML = data.weather[0].description;
+  // Displaying Current Weather Feels like
+  const currentWeatherFeels = document.querySelector('.weather-info__feel');
+  currentWeatherFeels.innerHTML = `Чувствуется как ${data.main.feels_like.toFixed(1)}°`;
+  // Displaying Current Weather Icon
+  const currentWeatherIcon = document.querySelector('.weather-content__icon');
+  const { weatherIcon, backType, fontColor, spanColor, boxColor } = todayIconsConverter(data.weather[0].icon);
+  currentWeatherIcon.classList.add(`${weatherIcon}`);
+  // Displaying dynamic elements styling
+  dynamicStylesHandler(backType, fontColor, spanColor, boxColor)
 }
 
 async function main() {
@@ -434,9 +495,10 @@ async function main() {
     }
   }
 
-  const currentWeatherFetch = await openWeatherDataHandler();
+  const { status, weatherData } = await openWeatherDataHandler();
 
   clock()
+  todayHydrateData(weatherData)
 }
 
 main();
