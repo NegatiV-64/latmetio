@@ -10,6 +10,12 @@ const currentCity = document.getElementById('currentCity');
 const openWeatherCode = currentCity.getAttribute('open-weather-code');
 const hydrometCode = currentCity.getAttribute("hydromet-code")
 
+/**
+ * @function
+ * Generates API key for Open Weather API Call.
+ * @returns
+ * API Key.
+ */
 const apiGenerator = (cityCode) => {
   let apiKey = "default";
 
@@ -76,6 +82,12 @@ const apiGenerator = (cityCode) => {
 
 const apiKey = apiGenerator(openWeatherCode);
 
+/**
+ * @function
+ * Analyzes the weather type returned from the Open Weather API. Then return data for dynamic content and styling.
+ * @returns
+ * Object that contains weatherIcon, backType, fontColor, spanColor, boxColor.
+ */
 const todayIconsConverter = (icon) => {
   // Variables for return object
   let weatherIcon = null;
@@ -401,6 +413,12 @@ const todayIconsConverter = (icon) => {
   return { weatherIcon, backType, fontColor, spanColor, boxColor }
 }
 
+/**
+ * @function
+ * Recursive function that get the current time in Hours and Minutes. Reruns every second.
+ * @returns
+ * Nothing, since it modifies the DOM directly.
+ */
 const clock = () => {
   const currentDate = new Date();
   const currentHour = currentDate.getHours();
@@ -415,8 +433,21 @@ const clock = () => {
   setTimeout(() => clock(), 1000);
 }
 
+/**
+ * @function
+ * Arrow function with shorhand syntax, that counts the average between two numbers.
+ * @returns
+ * Returns an average number.
+ */
 const avegareNum = (num1, num2) => Math.round((+num1 + +num2) / 2);
 
+/**
+ * @function
+ * Function that require the data from function "todayIconsConverter", to dynamically style elements.
+ * It changes the background color, font color, menu background and box-shadow styles.
+ * @returns
+ * Nothing, since it change DOM directly.
+ */
 const dynamicStylesHandler = (backType, fontColor, spanColor, boxColor) => {
   // Changing Background of the Body Element
   const websiteBody = document.querySelector('.body__back');
@@ -436,7 +467,7 @@ const dynamicStylesHandler = (backType, fontColor, spanColor, boxColor) => {
   // Changing Side Menu Color:
   const sideMenu = document.querySelector('.menu');
   sideMenu.classList.add(`${backType}`)
-  // Редактирование box-shadow
+  // Changing box-shadow
   const boxShadow = document.querySelectorAll('.box_picker');
   for (let index = 0; index < boxShadow.length; index++) {
     const boxElement = boxShadow[index];
@@ -444,6 +475,12 @@ const dynamicStylesHandler = (backType, fontColor, spanColor, boxColor) => {
   }
 }
 
+/**
+ * @function
+ * Function that analyzes the passed weather icon type from Hydromet.uz API.
+ * @returns
+ * Object, that have two values: forecastText and forecastIcon 
+ */
 const forecastIconsConverter = (type) => {
   let forecastText = null;
   let forecastIcon = null;
@@ -540,6 +577,12 @@ const forecastIconsConverter = (type) => {
   };
 }
 
+/**
+ * @function
+ * Function, that changes the DOM of forecast days, it requires DOM classes of the elements, date and forecastData
+ * @returns
+ * Nothing, since it directly modifies the DOM
+ */
 const addForecastToDOM = (
   dateDOM, weatherTypeDOM, iconDOM, tempDayDOM, tempNightDOM,
   forecastDate,
@@ -567,6 +610,13 @@ const addForecastToDOM = (
   forecastTempNightHTML.innerHTML = avegareNum(tempNightMax, tempNightMin);
 }
 
+/**
+ * @function
+ * Special function that "hydrates" the DOM of Today Card with the fetched data. 
+ * Requires only fetched data from Open Weather API.
+ * @returns
+ * Nothing, since it directly modifies the DOM
+ */
 const todayHydrateData = (data) => {
   const currentDate = new Date();
   const dateOptions = { weekday: 'long', month: 'long' };
@@ -600,6 +650,13 @@ const todayHydrateData = (data) => {
   dynamicStylesHandler(backType, fontColor, spanColor, boxColor)
 }
 
+/**
+ * @function
+ * Special function that "hydrates" the DOM of Forecast Cards with the fetched data. 
+ * Requires only fetched data from Hydromet.uz API.
+ * @returns
+ * Nothing, since it directly modifies the DOM
+ */
 const forecastHydrateData = (data) => {
   const dayDateArray = data.map(day => day.date);
   const dayPartArray = data.map(day => day.day_part);
@@ -670,6 +727,13 @@ const forecastHydrateData = (data) => {
   )
 }
 
+/**
+ * @function
+ * Special asynchronous function that powers up other functions.
+ * Inside, it fetches the data from Open Weather API and Hydromet.uz API.
+ * @returns
+ * Promise :)
+ */
 async function main() {
   const openWeatherDataHandler = async () => {
     // const openWeatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${openWeatherCode}&appid=${apiKey}&units=metric&lang=ru`;
