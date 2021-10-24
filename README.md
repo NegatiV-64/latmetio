@@ -30,3 +30,8 @@ There is a bug with the Hydromet.uz API regarding the number of forecasted days.
 
 ## PS
 I know that the code isn't perfect and to be honest, I could have optimize it and clean it up. Maybe if I have some free time, I would do it. 
+
+## Update 24/10/2021
+Well, I got some free time and refactored the code. Now the old "untouched" legacy code could be found in "legacy" branch.
+
+In new code, I am using ES5/ES6 synthax, removed jQuery as a dependency and removed the unnecessary legacy HTML code. 
