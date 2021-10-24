@@ -70,6 +70,331 @@ const apiGenerator = (cityCode) => {
   return apiKey;
 }
 
+const todayIconsConverter = (icon) => {
+  // Variables for return object
+  let weatherIcon = null;
+  let backType = null;
+  let fontColor = null;
+  let spanColor = null;
+  let boxColor = null;
+
+  const currentHour = new Date().getHours();
+
+  // Night Background
+  if (currentHour < 6 || currentHour > 22) {
+    switch (icon) {
+      case "01n":
+        weatherIcon = "ri-moon-fill";
+        backType = "body__back_01n";
+        fontColor = "color_picker_white";
+        spanColor = "color_span_white";
+        boxColor = "black_shadow";
+        break;
+
+      case "02n":
+        weatherIcon = "ri-moon-cloudy-fill";
+        backType = "body__back_02n";
+        fontColor = "color_picker_white";
+        spanColor = "color_span_white";
+        boxColor = "black_shadow";
+        break;
+
+      case "03n":
+        weatherIcon = "ri-cloudy-fill";
+        backType = "body__back_03n";
+        fontColor = "color_picker_white";
+        spanColor = "color_span_white";
+        boxColor = "black_shadow";
+        break;
+
+      case "04n":
+        weatherIcon = "ri-cloudy-2-fill";
+        backType = "body__back_04n";
+        fontColor = "color_picker_white";
+        spanColor = "color_span_white";
+        boxColor = "black_shadow";
+        break;
+
+      case "09n":
+        weatherIcon = "ri-heavy-showers-fill";
+        backType = "body__back_09n";
+        fontColor = "color_picker_white";
+        spanColor = "color_span_white";
+        boxColor = "black_shadow";
+        break;
+
+      case "10n":
+        weatherIcon = "ri-showers-fill";
+        backType = "body__back_10n";
+        fontColor = "color_picker_white";
+        spanColor = "color_span_white";
+        boxColor = "black_shadow";
+        break;
+
+      case "11n":
+        weatherIcon = "ri-thunderstorms-fill";
+        backType = "body__back_11n";
+        fontColor = "color_picker_black";
+        spanColor = "color_span_black";
+        boxColor = "black_shadow";
+        break;
+
+      case "13n":
+        weatherIcon = "ri-snowy-fill";
+        backType = "body__back_13n";
+        fontColor = "color_picker_white";
+        spanColor = "color_span_white";
+        boxColor = "black_shadow";
+        break;
+
+      case "50n":
+        weatherIcon = "ri-foggy-fill";
+        backType = "body__back_50n";
+        fontColor = "color_picker_white";
+        spanColor = "color_span_white";
+        boxColor = "black_shadow";
+        break;
+
+      case "01d":
+        weatherIcon = "ri-moon-fill";
+        backType = "body__back_01n"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "02d":
+        weatherIcon = "ri-moon-cloudy-fill";
+        backType = "body__back_02n"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "03d":
+        weatherIcon = "ri-cloudy-fill";
+        backType = "body__back_03n"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "04d":
+        weatherIcon = "ri-cloudy-2-fill";
+        backType = "body__back_04n";
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "09d":
+        weatherIcon = "ri-heavy-showers-fill";
+        backType = "body__back_09n"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "10d":
+        weatherIcon = "ri-showers-fill";
+        backType = "body__back_10n"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "11d":
+        weatherIcon = "ri-thunderstorms-fill";
+        backType = "body__back_11n"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "black_shadow";
+        break;
+
+      case "13d":
+        weatherIcon = "ri-snowy-fill";
+        backType = "body__back_13n"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "50d":
+        weatherIcon = "ri-foggy-fill";
+        backType = "body__back_50n";
+        fontColor = "color_picker_white";
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      default:
+        weatherIcon = "ri-moon-fill";
+        backType = "body__back_01n";
+        fontColor = "color_picker_white";
+        spanColor = "color_span_white";
+        boxColor = "black_shadow";
+        break;
+    }
+  }
+  // Daytime Background
+  else {
+    switch (icon) {
+      case "01d":
+        weatherIcon = "ri-sun-fill";
+        backType = "body__back_01d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      case "02d":
+        weatherIcon = "ri-sun-cloudy-fill";
+        backType = "body__back_02d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      case "03d":
+        weatherIcon = "ri-cloudy-fill";
+        backType = "body__back_03d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      case "04d":
+        weatherIcon = "ri-cloudy-2-fill";
+        backType = "body__back_04d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      case "09d":
+        weatherIcon = "ri-heavy-showers-fill";
+        backType = "body__back_09d"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "10d":
+        weatherIcon = "ri-showers-fill";
+        backType = "body__back_10d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      case "11d":
+        weatherIcon = "ri-thunderstorms-fill";
+        backType = "body__back_11d"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "13d":
+        weatherIcon = "ri-snowy-fill";
+        backType = "body__back_13d"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "50d":
+        weatherIcon = "ri-foggy-fill";
+        backType = "body__back_50d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      case "01n":
+        weatherIcon = "ri-sun-fill";
+        backType = "body__back_01d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      case "02n":
+        weatherIcon = "ri-sun-cloudy-fill";
+        backType = "body__back_02d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      case "03n":
+        weatherIcon = "ri-cloudy-fill";
+        backType = "body__back_03d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      case "04n":
+        weatherIcon = "ri-cloudy-2-fill";
+        backType = "body__back_04d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      case "09n":
+        weatherIcon = "ri-heavy-showers-fill";
+        backType = "body__back_09d"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "10n":
+        weatherIcon = "ri-showers-fill";
+        backType = "body__back_10d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      case "11n":
+        weatherIcon = "ri-thunderstorms-fill";
+        backType = "body__back_11d"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "13n":
+        weatherIcon = "ri-snowy-fill";
+        backType = "body__back_13d"
+        fontColor = "color_picker_white"
+        spanColor = "color_span_white"
+        boxColor = "black_shadow";
+        break;
+
+      case "50n":
+        weatherIcon = "ri-foggy-fill";
+        backType = "body__back_50d"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+
+      default:
+        weatherIcon = "ri-rainbow-fill"
+        backType = "body__back_def"
+        fontColor = "color_picker_black"
+        spanColor = "color_span_black";
+        boxColor = "white_shadow";
+        break;
+    }
+  }
+  return [weatherIcon, backType, fontColor, spanColor, boxColor]
+}
+
 const currentCity = document.getElementById('currentCity');
 const openWeatherCode = currentCity.getAttribute('open-weather-code');
 const hydrometCode = currentCity.getAttribute("hydromet-code")
