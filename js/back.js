@@ -74,3 +74,28 @@ const currentCity = document.getElementById('currentCity');
 const openWeatherCode = currentCity.getAttribute('open-weather-code');
 const hydrometCode = currentCity.getAttribute("hydromet-code")
 const apiKey = apiGenerator(openWeatherCode);
+
+async function main() {
+  const openWeatherDataHandler = async () => {
+    // const openWeatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${openWeatherCode}&appid=${apiKey}&units=metric&lang=ru`;
+    const openWeatherApiUrl = `../test/dummyCurrent.json`;
+    const response = await fetch(openWeatherApiUrl)
+
+    if (!response.ok) {
+      return {
+        status: false,
+        weatherData: []
+      }
+    }
+
+    const weatherData = await response.json();
+    return {
+      status: true,
+      weatherData
+    }
+  }
+
+  const currentWeatherFetch = await openWeatherDataHandler();
+}
+
+main();
