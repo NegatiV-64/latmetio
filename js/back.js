@@ -663,11 +663,6 @@ const forecastHydrateData = (data) => {
   const dayMaxTempArray = data.map(day => day.air_t_max);
   const dayMinTempArray = data.map(day => day.air_t_min);
   const dayWeatherType = data.map(day => day.icon);
-  console.log(dayDateArray)
-  console.log(dayPartArray);
-  console.log(dayWeatherType);
-  console.log(dayMaxTempArray);
-  console.log(dayMinTempArray);
 
   // Adding todayForecast
   addForecastToDOM(
