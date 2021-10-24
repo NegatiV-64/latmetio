@@ -6,6 +6,11 @@ const apiKeysArray = [
   "96fd9bf8f54700190b83b28c5019174b"
 ]
 
+const currentCity = document.getElementById('currentCity');
+const openWeatherCode = currentCity.getAttribute('open-weather-code');
+const hydrometCode = currentCity.getAttribute("hydromet-code")
+const apiKey = apiGenerator(openWeatherCode);
+
 const apiGenerator = (cityCode) => {
   let apiKey = "default";
 
@@ -395,10 +400,19 @@ const todayIconsConverter = (icon) => {
   return [weatherIcon, backType, fontColor, spanColor, boxColor]
 }
 
-const currentCity = document.getElementById('currentCity');
-const openWeatherCode = currentCity.getAttribute('open-weather-code');
-const hydrometCode = currentCity.getAttribute("hydromet-code")
-const apiKey = apiGenerator(openWeatherCode);
+const clock = () => {
+  const currentDate = new Date();
+  const currentHour = currentDate.getHours();
+  let currentMinutes = currentDate.getMinutes();
+
+  if (currentMinutes < "10") {
+    currentMinutes = '0' + currentMinutes;
+  }
+
+  document.querySelector('.nav__time').innerHTML = `${currentHour}:${currentMinutes}`
+
+  setTimeout(() => clock(), 1000);
+}
 
 async function main() {
   const openWeatherDataHandler = async () => {
@@ -421,6 +435,8 @@ async function main() {
   }
 
   const currentWeatherFetch = await openWeatherDataHandler();
+
+  clock()
 }
 
 main();
