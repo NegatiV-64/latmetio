@@ -70,7 +70,7 @@ const apiGenerator = (cityCode) => {
   return apiKey;
 }
 
-const city = document.getElementById('currentCity');
-const openWeatherCode = city.getAttribute('open-weather-code');
-const hydrometCode = city.getAttribute("hydromet-code")
+const currentCity = document.getElementById('currentCity');
+const openWeatherCode = currentCity.getAttribute('open-weather-code');
+const hydrometCode = currentCity.getAttribute("hydromet-code")
 const apiKey = apiGenerator(openWeatherCode);
