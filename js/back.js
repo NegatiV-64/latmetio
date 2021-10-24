@@ -415,6 +415,8 @@ const clock = () => {
   setTimeout(() => clock(), 1000);
 }
 
+const avegareNum = (num1, num2) => Math.round((+num1 + +num2) / 2);
+
 const dynamicStylesHandler = (backType, fontColor, spanColor, boxColor) => {
   // Changing Background of the Body Element
   const websiteBody = document.querySelector('.body__back');
@@ -440,6 +442,129 @@ const dynamicStylesHandler = (backType, fontColor, spanColor, boxColor) => {
     const boxElement = boxShadow[index];
     boxElement.classList.add(`${boxColor}`)
   }
+}
+
+const forecastIconsConverter = (type) => {
+  let forecastText = null;
+  let forecastIcon = null;
+
+  switch (type) {
+    case "rain":
+      forecastText = "Дождь";
+      forecastIcon = "ri-rainy-fill"
+      break;
+
+    case "light_rain":
+      forecastText = "Небольшой дождь";
+      forecastIcon = "ri-drizzle-fill"
+      break;
+
+    case "clear":
+      forecastText = "Ясно";
+      forecastIcon = "ri-sun-fill"
+      break;
+
+    case "mostly_clear":
+      forecastText = "Небольшая облачность";
+      forecastIcon = "ri-sun-foggy-fill"
+      break;
+
+    case "partly_cloudy":
+      forecastText = "Переменная облачность";
+      forecastIcon = "ri-sun-cloudy-fill"
+      break;
+
+    case "mostly_cloudy":
+      forecastText = "В основном облачно";
+      forecastIcon = "ri-cloudy-2-fill"
+      break;
+
+    case "overcast":
+      forecastText = "Облачно";
+      forecastIcon = "ri-cloudy-fill"
+      break;
+
+    case "fog":
+      forecastText = "Туман";
+      forecastIcon = "ri-foggy-fill"
+      break;
+
+    case "heavy_rain":
+      forecastText = "Сильный дождь";
+      forecastIcon = "ri-heavy-showers-fill"
+      break;
+
+    case "thunderstorm":
+      forecastText = "Гроза";
+      forecastIcon = "ri-thunderstorms-fill"
+      break;
+
+    case "light-sleet":
+      forecastText = "Небольшие осадки";
+      forecastIcon = "ri-hail-fill"
+      break;
+
+    case "sleet":
+      forecastText = "Возможны осадки";
+      forecastIcon = "ri-showers-fill"
+      break;
+
+    case "heavy_sleet":
+      forecastText = "Сильные осадки";
+      forecastIcon = "ri-heavy-showers-fill"
+      break;
+
+    case "light_snow":
+      forecastText = "Небольшой снег";
+      forecastIcon = "ri-hail-fill"
+      break;
+
+    case "snow":
+      forecastText = "Снег";
+      forecastIcon = "ri-snowy-fill"
+      break;
+
+    case "heavy_snow":
+      forecastText = "Сильный снег";
+      forecastIcon = "ri-snowy-fill"
+      break;
+
+    default:
+      forecastText = "Данных нет";
+      forecastIcon = "ri-rainbow-fill"
+      break;
+  }
+
+  return {
+    forecastText, forecastIcon
+  };
+}
+
+const addForecastToDOM = (
+  dateDOM, weatherTypeDOM, iconDOM, tempDayDOM, tempNightDOM,
+  forecastDate,
+  forecastWeatherData,
+  tempDayMax, tempDayMin,
+  tempNightMax, tempNightMin
+) => {
+  const dateOptions = { weekday: 'long', month: 'long' };
+  const { forecastText, forecastIcon } = forecastIconsConverter(forecastWeatherData);
+  const [forecastMonth, forecastWeekDay] = forecastDate.toLocaleDateString('ru-Ru', dateOptions).split(" ")
+
+  const forecastDateHTML = document.querySelector(dateDOM);
+  forecastDateHTML.innerHTML = `${forecastWeekDay}, ${forecastDate.getDate()} ${forecastMonth}`;
+
+  const forecastIconHTML = document.querySelector(iconDOM);
+  forecastIconHTML.classList.add(`${forecastIcon}`)
+
+  const forecastTypeHTML = document.querySelector(weatherTypeDOM);
+  forecastTypeHTML.innerHTML = forecastText;
+
+  const forecastTempDayHTML = document.querySelector(tempDayDOM);
+  forecastTempDayHTML.innerHTML = avegareNum(tempDayMax, tempDayMin);
+
+  const forecastTempNightHTML = document.querySelector(tempNightDOM);
+  forecastTempNightHTML.innerHTML = avegareNum(tempNightMax, tempNightMin);
 }
 
 const todayHydrateData = (data) => {
@@ -475,6 +600,76 @@ const todayHydrateData = (data) => {
   dynamicStylesHandler(backType, fontColor, spanColor, boxColor)
 }
 
+const forecastHydrateData = (data) => {
+  const dayDateArray = data.map(day => day.date);
+  const dayPartArray = data.map(day => day.day_part);
+  const dayMaxTempArray = data.map(day => day.air_t_max);
+  const dayMinTempArray = data.map(day => day.air_t_min);
+  const dayWeatherType = data.map(day => day.icon);
+  console.log(dayDateArray)
+  console.log(dayPartArray);
+  console.log(dayWeatherType);
+  console.log(dayMaxTempArray);
+  console.log(dayMinTempArray);
+
+  // Adding todayForecast
+  addForecastToDOM(
+    ".weather-card-left__date_today",
+    ".weather-card-left__weather_today",
+    ".weather-card-right__icon_today",
+    ".weather-card-right__tempDay_today",
+    ".weather-card-right__tempNight_today",
+    new Date(),
+    dayWeatherType[1],
+    dayMaxTempArray[1],
+    dayMinTempArray[1],
+    dayMaxTempArray[0],
+    dayMinTempArray[0]
+  )
+  // Adding day1Forecast
+  addForecastToDOM(
+    ".weather-card-left__date_tomorrow",
+    ".weather-card-left__weather_tomorrow",
+    ".weather-card-right__icon_tomorrow",
+    ".weather-card-right__tempDay_tomorrow",
+    ".weather-card-right__tempNight_tomorrow",
+    new Date(new Date().getTime() + (24 * 60 * 60 * 1000) * 1),
+    dayWeatherType[3],
+    dayMaxTempArray[3],
+    dayMinTempArray[3],
+    dayMaxTempArray[2],
+    dayMinTempArray[2]
+  )
+  // Adding day2Forecast
+  addForecastToDOM(
+    ".weather-card-left__date_aftertomorrow",
+    ".weather-card-left__weather_aftertomorrow",
+    ".weather-card-right__icon_aftertomorrow",
+    ".weather-card-right__tempDay_aftertomorrow",
+    ".weather-card-right__tempNight_aftertomorrow",
+    new Date(new Date().getTime() + (24 * 60 * 60 * 1000) * 2),
+    dayWeatherType[5],
+    dayMaxTempArray[5],
+    dayMinTempArray[5],
+    dayMaxTempArray[4],
+    dayMinTempArray[4]
+  )
+  // Adding day3Forecast
+  addForecastToDOM(
+    ".weather-card-left__date_day3",
+    ".weather-card-left__weather_day3",
+    ".weather-card-right__icon_day3",
+    ".weather-card-right__tempDay_day3",
+    ".weather-card-right__tempNight_day3",
+    new Date(new Date().getTime() + (24 * 60 * 60 * 1000) * 3),
+    dayWeatherType[7],
+    dayMaxTempArray[7],
+    dayMinTempArray[7],
+    dayMaxTempArray[6],
+    dayMinTempArray[6]
+  )
+}
+
 async function main() {
   const openWeatherDataHandler = async () => {
     // const openWeatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${openWeatherCode}&appid=${apiKey}&units=metric&lang=ru`;
@@ -497,8 +692,40 @@ async function main() {
 
   const { status, weatherData } = await openWeatherDataHandler();
 
-  clock()
-  todayHydrateData(weatherData)
+  if (!status) {
+    alert("Произошла ошибка при загрузке данных")
+    return;
+  }
+
+  clock();
+  todayHydrateData(weatherData);
+
+  const hydrometWeatherDataHandler = async () => {
+    // const response = await fetch(`https://www.meteo.uz/index.php/forecast/city?city=${hydrometCode}&expand=city`)
+    const response = await fetch(`../test/dummyHydro.json`)
+
+    if (!response.ok) {
+      return {
+        status: false,
+        weatherData: []
+      }
+    }
+
+    const result = await response.json();
+    result.reverse();
+
+    return {
+      status: true,
+      weatherData: result
+    }
+  }
+
+  const { status: hydroStatus, weatherData: hydroWeatherData } = await hydrometWeatherDataHandler();
+  if (!hydroStatus) {
+    alert("Произошла ошибка при загрузке данных")
+    return;
+  }
+  forecastHydrateData(hydroWeatherData)
 }
 
 main();
